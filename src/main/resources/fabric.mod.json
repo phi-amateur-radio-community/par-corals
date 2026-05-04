@@ -1,0 +1,41 @@
+{
+	"schemaVersion": 1,
+	"id": "par-corals",
+	"version": "${version}",
+	"name": "Par Corals",
+	"description": "This is an example description! Tell everyone what your mod is about!",
+	"authors": [
+		"Me!"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/par-corals/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"org.phiarc.pac.ParCorals"
+		],
+		"client": [
+			"org.phiarc.pac.client.ParCoralsClient"
+		],
+		"fabric-datagen": [
+			"org.phiarc.pac.client.ParCoralsDataGenerator"
+		]
+	},
+	"mixins": [
+		"par-corals.mixins.json",
+		{
+			"config": "par-corals.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.19.2",
+		"minecraft": "~1.20.1",
+		"java": ">=17",
+		"fabric-api": "*"
+	}
+}
