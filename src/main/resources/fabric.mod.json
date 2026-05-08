@@ -3,15 +3,16 @@
 	"id": "par-corals",
 	"version": "${version}",
 	"name": "Par Corals",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"description": "A Minecraft Mod about corals.",
 	"authors": [
-		"Me!"
+		"St Rangeset",
+        ""
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://phiarc.org/",
+		"sources": "https://github.com/phi-amateur-radio-community/par-corals"
 	},
-	"license": "CC0-1.0",
+	"license": "GPLv3 or later",
 	"icon": "assets/par-corals/icon.png",
 	"environment": "*",
 	"entrypoints": {
