@@ -1,5 +1,8 @@
 # Par Corals
 
+> Author: St Rangeset
+> Date: 2026-05-09
+
 ## About
 
 A Minecraft mod focused on corals and the ocean.
