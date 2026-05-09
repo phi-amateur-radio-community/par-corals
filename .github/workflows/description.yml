@@ -15,7 +15,7 @@ jobs:
 
       - name: Push to the Modrinth
         run: |
-          BODY=$(jq -Rs '{body: .}' /DESCRIPTION.md)
+          BODY=$(jq -Rs '{body: .}' DESCRIPTION.md)
           
           curl -X PATCH \
             -H "Authorization: ${{ secrets.MODRINTH_TOKEN }}" \
