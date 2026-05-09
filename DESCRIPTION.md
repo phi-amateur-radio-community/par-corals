@@ -20,7 +20,7 @@ This project is part of [PhiARC](https://www.phiarc.org/).
 
 ## Open Source
 
-This project is open source and licensed under the MIT Licence.
+This project is open source and licensed under the [MIT License](https://github.com/phi-amateur-radio-community/par-corals/blob/master/LICENSE).
 
 You are free to use, modify, distribute, and contribute to the project in accordance with the license terms.
 
