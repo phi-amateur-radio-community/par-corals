@@ -1,0 +1,62 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    env:
+      VERSION: ${{ github.ref_name }}
+      VERSION_TYPE: ${{
+        contains(github.ref_name, '-a') && 'alpha' ||
+        contains(github.ref_name, '-b') && 'beta' ||
+        contains(github.ref_name, '-rc') && 'rc' ||
+        'release'
+      }}
+      PROJECT_ID: P6zVZH7K
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v6
+
+      - name: Setup Java
+        uses: actions/setup-java@v5
+        with:
+          java-version: 17
+          distribution: temurin
+
+      - name: Build
+        run: ./gradlew build
+
+      - name: Set Location
+        run: |
+          echo 'MAIN_JAR=$(find "${MAIN_JAR_DIR}" -maxdepth 1 -type f -name "*.jar" | head -n 1)' >> $GITHUB_ENV
+          echo 'SOURCES_JAR=$(find "${SOURCES_JAR_DIR}" -maxdepth 1 -type f -name "*.jar" | head -n 1)' >> $GITHUB_ENV
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v3
+        id: github_release
+        with:
+          name: ${{ env.VERSION }}
+          files: |
+            ${{ env.MAIN_JAR }}
+            ${{ env.SOURCES_JAR }}
+          generate_release_notes: true
+          prerelease: ${{ env.VERSION_TYPE != 'release' }}
+
+      - name: Create Modrinth Release
+        run: bash release/modrinth.sh
+        env:
+          VERSION_TYPE: ${{ env.VERSION_TYPE }}
+          TAG: ${{ env.VERSION }}
+          CHANGELOG: ${{ steps.github_release.outputs.body }}
+          MODRINTH_TOKEN: ${{ secrets.MODRINTH_TOKEN }}
+          MAIN_JAR: ${{ env.MAIN_JAR }}
+          SOURCES_JAR: ${{ env.SOURCES_JAR }}
