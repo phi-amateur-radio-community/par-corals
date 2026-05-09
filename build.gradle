@@ -91,3 +91,11 @@ publishing {
 		// retrieving dependencies.
 	}
 }
+
+tasks.named("remapJar") {
+    destinationDirectory = layout.buildDirectory.dir("libs/release")
+}
+
+tasks.named("remapSourcesJar") {
+    destinationDirectory = layout.buildDirectory.dir("libs/sources")
+}
