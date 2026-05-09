@@ -1,0 +1,25 @@
+name: Push Description
+
+on:
+  push:
+    paths:
+      - /DESCRIPTION.md
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout document
+        uses: actions/checkout@v5
+
+      - name: Push to the Modrinth
+        run: |
+          BODY=$(jq -Rs '{body: .}' /DESCRIPTION.md)
+          
+          curl -X PATCH \
+            -H "Authorization: ${{ secrets.MODRINTH_TOKEN }}" \
+            -H “Content-Type: application/json" \
+            -H "User-Agent: phi-amateur-radio-community/par-corals (phiarc@hotmail.com)" \
+            -d "$BODY" \
+            https://api.modrinth.com/v2/project/par-corals
