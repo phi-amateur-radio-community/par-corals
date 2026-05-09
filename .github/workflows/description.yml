@@ -3,7 +3,7 @@ name: Push Description
 on:
   push:
     paths:
-      - /DESCRIPTION.md
+      - 'DESCRIPTION.md'
 
 jobs:
   build:
