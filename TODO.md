@@ -1,6 +1,9 @@
 # TODO List
 
-## GitHub Actions
+# Develop v0.1
 
-- Push Modrinth
-- Create Release
+- Nutritious seawater
+- Coral growth
+- Coral recovery
+- Coral drowned
+- Rusty copper
