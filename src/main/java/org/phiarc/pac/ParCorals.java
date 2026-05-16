@@ -13,5 +13,7 @@ public class ParCorals implements ModInitializer {
 	@Override
 	public void onInitialize() {
         ParCoralsItem.initialize();
+        ParCoralsBlocks.initialize();
+        ParCoralsFluids.initialize();
 	}
 }
