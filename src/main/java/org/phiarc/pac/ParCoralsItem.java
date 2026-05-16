@@ -22,10 +22,12 @@ public final class ParCoralsItem {
             .build();
 
     public static final Item SILICATE = register(new Item(new FabricItemSettings()), "silicate");
+    public static final Item NUTRIENT_SALT = register(new Item(new FabricItemSettings()), "nutrient_salt");
 
     public static void initialize() {
         Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, PAC_ITEM_GROUP_KEY, PAC_ITEM_GROUP);
         ItemGroupEvents.modifyEntriesEvent(PAC_ITEM_GROUP_KEY).register(itemGroup -> itemGroup.accept(ParCoralsItem.SILICATE));
+        ItemGroupEvents.modifyEntriesEvent(PAC_ITEM_GROUP_KEY).register(itemGroup -> itemGroup.accept(ParCoralsItem.NUTRIENT_SALT));
     }
 
     public static Item register(Item item, String id) {
